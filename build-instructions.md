@@ -319,17 +319,6 @@ needed.
 Docker Deployment
 -----------------
 
-Install [Docker](https://docs.docker.com/engine/install/ubuntu/).
-
-Build and run the Docker container for the `comrun` service:
-
-    docker build --tag codecheck:1.0-SNAPSHOT comrun
-    docker run -p 8080:8080 -it codecheck:1.0-SNAPSHOT
-
-Test that it works:
-
-    /opt/codecheck/codecheck -l samples/java/example1 &
-
 Create a file `conf/production.conf` holding an [application
 secret](https://www.playframework.com/documentation/2.8.x/ApplicationSecret):
 
@@ -338,17 +327,42 @@ secret](https://www.playframework.com/documentation/2.8.x/ApplicationSecret):
 
 Do not check this file into version control!
 
-Build and run the Docker container for the `play-codecheck` server:
+## Build and run the comrun service Docker container
+From the root directory of the repository, build the comrun service Docker container
+```
+sudo docker build --tag codecheck:1.0-SNAPSHOT comrun
+```
+From the root directory of the repository, run the comrun service Docker container
+```
+sudo docker run -p 8080:8080 -it codecheck:1.0-SNAPSHOT
+```
+To verify that it works
+```
+/opt/codecheck/codecheck -l samples/java/example1 &
+```
 
-    sbt docker:publishLocal 
-    docker run -p 9090:9000 -it --add-host host.docker.internal:host-gateway play-codecheck:1.0-SNAPSHOT
 
-Test that it works by pointing your browser to
-<http://localhost:9090/assets/uploadProblem.html>. Upload a problem.
+## Build and run the play-codecheck Docker container
+From the root directory of the repository, build the Docker image
+```
+sudo sbt docker:publishLocal 
+```
+From the root directory of the repository, run the Docker container
+```
+sudo docker run -p 9090:9000 -it --add-host host.docker.internal:host-gateway play-codecheck:1.0-SNAPSHOT
+```
+To verify that it works visit the url and upload a problem.
+```
+http://localhost:9090/assets/uploadProblem.html
+```
 
-Kill both containers by running this command in another terminal:
+### Shutdown both containers
+Open a terminal and shutdown both containers
+```
+docker container kill $(docker ps -q)
+```
 
-    docker container kill $(docker ps -q)
+
 
 Comrun Service Deployment {#service-deployment}
 -------------------------
