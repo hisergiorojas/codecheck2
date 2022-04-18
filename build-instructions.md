@@ -375,38 +375,46 @@ Here is how to deploy the `comrun` service to Google Cloud.
 
 Make a Google Cloud Run project. Define a service `comrun`.
 
-Then run:
 
-    export PROJECT=your Google project name
-    docker tag codecheck:1.0-SNAPSHOT gcr.io/$PROJECT/comrun
-    docker push gcr.io/$PROJECT/comrun
+After creating a project look for the project id 
+```
+export PROJECT=your Google project id
+```
 
-    gcloud run deploy comrun \
-      --image gcr.io/$PROJECT/comrun \
-      --port 8080 \
-      --platform managed \
-      --region us-central1 \
-      --allow-unauthenticated \
-      --min-instances=1 \
-      --max-instances=50 \
-      --memory=512Mi \
-      --concurrency=40
+Deploy the Comrun service
+```
+docker tag codecheck:1.0-SNAPSHOT gcr.io/$PROJECT/comrun
+docker push gcr.io/$PROJECT/comrun
 
-You should get a URL for the service. Make a note of it---it won\'t
-change, and you need it in the next steps. To test that the service is
-properly deployed, do this:
+gcloud run deploy comrun \
+  --image gcr.io/$PROJECT/comrun \
+  --port 8080 \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --min-instances=1 \
+  --max-instances=50 \
+  --memory=512Mi \
+  --concurrency=40
+```
 
-    export REMOTE_URL=the URL of the comrun service
-    cd path to/codecheck2 
-    /opt/codecheck/codecheck -rt samples/java/example1
 
-You should get a report that was obtained by sending the compile and run
-jobs to your remote service.
+You will get a URL for the service.
+
+To verify that the service is properly deployed, You should get a report that was obtained by sending the compile and run jobs to your remote service.
+```
+export REMOTE_URL=the URL of the comrun service
+cd path to/codecheck2 
+/opt/codecheck/codecheck -rt samples/java/example1
+```
+
 
 Alternatively, you can test with the locally running web app. In
 `conf/production.conf`, you need to add
 
     com.horstmann.codecheck.comrun.remote= the URL of the comrun service
+    
+    
 
 Play Server Deployment {#server-deployment}
 ----------------------
