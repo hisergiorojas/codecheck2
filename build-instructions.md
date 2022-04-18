@@ -398,6 +398,7 @@ gcloud run deploy comrun \
   --concurrency=40
 ```
 
+## Check if the comrun service is running
 
 You will get a URL for the service.
 
@@ -414,6 +415,12 @@ Alternatively, you can test with the locally running web app. In
 
     com.horstmann.codecheck.comrun.remote= the URL of the comrun service
     
+ 
+To verify that the comrun service is running, visit this url
+
+```
+https://service url/api/health
+```
     
 
 Play Server Deployment {#server-deployment}
