@@ -82,37 +82,10 @@ We would be deploying the comrun service to [Google Cloud](https://cloud.google.
 
 Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for comrun.
 
-After creating a project look for the project id 
-```
-export PROJECT=your Google project id
-```
-
-Deploy the Comrun service
-```
-docker tag codecheck:1.0-SNAPSHOT gcr.io/$PROJECT/comrun
-docker push gcr.io/$PROJECT/comrun
-
-gcloud run deploy comrun \
-  --image gcr.io/$PROJECT/comrun \
-  --port 8080 \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --min-instances=1 \
-  --max-instances=50 \
-  --memory=512Mi \
-  --concurrency=40
-```
 
 
-You will get a URL for the service.
 
-To verify that the service is properly deployed, You should get a report that was obtained by sending the compile and run jobs to your remote service.
-```
-export REMOTE_URL=the URL of the comrun service
-cd path to/codecheck2 
-/opt/codecheck/codecheck -rt samples/java/example1
-```
+
 ## Play Server Cloud Deployment
 The Play Server is a web application that manages submission and assignments.
 
