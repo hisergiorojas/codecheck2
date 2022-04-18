@@ -77,51 +77,154 @@ Run the script
 ```
 ./codecheck_rpm_install.sh
 ```
-Building the Command Line Tool
-------------------------------
 
-These instructions are for Ubuntu 20.04LTS.
 
-Install the following software:
 
-    sudo apt install openjdk-11-jdk git ant curl unzip
+## (Manually) Install Codecheck dependencies
+Open a terminal and install the dependencies
+```
+sudo apt-get update
+sudo apt install openjdk-11-jdk git ant curl unzip
+```
 
-Make a directory `/opt/codecheck` and a subdirectory `ext` that you own:
+Install sbt for Linux (deb) or [follow the instruction for your environment](https://www.scala-sbt.org/download.html)
+```
+echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
+echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee /etc/apt/sources.list.d/sbt_old.list
+curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
+sudo apt-get update
+sudo apt-get install sbt
+```
+Install docker for Linux or [follow the instruction for your environment](https://docs.docker.com/engine/install/)
+```
+ sudo apt-get update
+ 
+  sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+Add Docker’s official GPG key
+```
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+Use the following command to set up the stable repository.
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+Update the apt package index, and install the latest version of Docker Engine and containerd
+```
+ sudo apt-get update
+ sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
 
-    sudo mkdir -p /opt/codecheck/ext
-    export ME=$(whoami) ; sudo -E chown $ME /opt/codecheck /opt/codecheck/ext
+Install Google Cloud CLI for linux or [follow the instruction for your environment](https://cloud.google.com/sdk/docs/install#linux)
 
-Clone the repo:
+Open a terminal and download Google Cloud SDK
+```
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-373.0.0-linux-x86_64.tar.gz
+```
 
-    git clone https://github.com/cayhorstmann/codecheck2
+Extract the contents of the file to any location on your file system (preferably your Home directory). To replace an existing installation, remove the existing google-cloud-sdk directory and then extract the archive to the same location.
+```
+tar -xf google-cloud-sdk-373.0.0-linux-x86.tar.gz
+```
 
-Get a few JAR files:
+Run the script (from the root of the folder you extracted to) using the following command
+```
+./google-cloud-sdk/install.sh
+```
+To initialize the gcloud CLI, run gcloud init
+```
+./google-cloud-sdk/bin/gcloud init
+```
+Install AWS CLI for linux or [follow the instruction for your environment](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-    cd codecheck2/cli
-    mkdir lib
-    cd lib
-    curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.6.4/jackson-core-2.6.4.jar
-    curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.6.4/jackson-annotations-2.6.4.jar
-    curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.6.4/jackson-databind-2.6.4.jar
-    cd ../../comrun/bin
-    mkdir lib
-    cd lib
-    curl -LOs https://repo1.maven.org/maven2/com/puppycrawl/tools/checkstyle/8.42/checkstyle-8.42.jar
-    curl -LOs https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
-    curl -LOs https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
-    cd ../../../..
+Open a terminal and download the AWS CLI installation file 
 
-Build the command-line tool:
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+```
 
-    cd codecheck2
-    ant -f cli/build.xml
+Unzip the installer
+```
+unzip awscliv2.zip
+```
 
-Test that it works:
+Run the install program
+```
+sudo ./aws/install
+```
+Confirm the installation with the following command
+```
+aws --version
+```
+Configure AWS CLI [instruction](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html)
+* Access key ID
 
-    /opt/codecheck/codecheck -t samples/java/example1
+* Secret access key
 
+* AWS Region
+
+* Output format
+```
+aws configure
+```
+
+## Setup Codecheck environment
+Create a /opt/codecheck directory and a subdirectory ext that you own
+```
+sudo mkdir -p /opt/codecheck/ext
+export ME=$(whoami) ; sudo -E chown $ME /opt/codecheck /opt/codecheck/ext
+```
+
+## Build the command-line tool
+Install jackson-core, jackson-annotations, and jackson-databind jar files
+
+From the root directory of the repository, go to cli directory and make a lib directory
+```
+cd cli
+mkdir lib
+```
+
+Install the jar files in the lib directory
+```
+cd lib
+curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.6.4/jackson-core-2.6.4.jar
+curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.6.4/jackson-annotations-2.6.4.jar
+curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.6.4/jackson-databind-2.6.4.jar
+```
+Install checkstyle, hamcrest-core, and junit jar files
+
+From the root directory of the repository, go to comrun directory and next go to bin directory, then make a lib directory
+```
+cd comrun/bin
+mkdir lib
+```
+Install the jar files in the lib directory
+```
+cd lib
+curl -LOs https://repo1.maven.org/maven2/com/puppycrawl/tools/checkstyle/8.42/checkstyle-8.42.jar
+curl -LOs https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+curl -LOs https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+```
+From the root directory of the repository, build the command-line tool
+```
+ant -f cli/build.xml
+```
+To verify that it works
+```
+/opt/codecheck/codecheck -t samples/java/example1
+```
 If you omit the `-t`, you get a report with your default browser instead
 of the text report.
+
+
+
+    
 
 Debugging the Command Line Tool
 -------------------------------
