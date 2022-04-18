@@ -269,26 +269,28 @@ When debugging, add the VM argument
 
     -Dcom.horstmann.codecheck.comrun.remote=http://localhost:8080/api/upload
 
-Building the Web Application
-----------------------------
+## Run the web application locally
 
-Install, following the instructions of the providers,
+From the root directory of the repository, run the play-codecheck server    
+```
+sbt run
+```
 
--   [SBT](https://www.scala-sbt.org/download.html)
--   [Eclipse](https://www.eclipse.org/eclipseide/)
 
-Run the `play-codecheck` server:
 
-    sbt run
-
-Point the browser to <http://localhost:9090/assets/uploadProblem.html>.
-Upload a problem and test it.
-
+To verify that it works visit this url and upload a problem
+```
+http://localhost:9000/assets/uploadProblem.html
+```
 Note: The problem files will be located inside the `/opt/codecheck/ext`
 directory.
 
 Debugging the Server
 --------------------
+
+Install, following the instructions
+
+-   [Eclipse](https://www.eclipse.org/eclipseide/)
 
 Import the project into Eclipse. Run
 
