@@ -104,17 +104,6 @@ Create a [Google Cloud Run](https://console.cloud.google.com/run?project) projec
 
 
 
-
-
-
-
-## Check if the comrun service is running
-To verify that the comrun service is running, visit this url
-
-```
-https://service url/api/health
-```
-
 ## Error cgroups: cgroup mountpoint does not exist: unknown
 A temporary fix
 ```
