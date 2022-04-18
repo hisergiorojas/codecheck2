@@ -363,7 +363,7 @@ docker container kill $(docker ps -q)
 ```
 
 
-
+# Cloud Deployment
 Comrun Service Deployment {#service-deployment}
 -------------------------
 
@@ -427,9 +427,12 @@ Add the following to `conf/production.conf`:
     com.horstmann.codecheck.repo.ext=""
     com.horstmann.codecheck.storeLocation=""
 
-Deploy the `play-codecheck` service:
+After creating a project look for the project id 
+```
+export PROJECT=your Google project id
+```
 
-    export PROJECT=your Google project name
+Deploy the `play-codecheck` service:
 
     docker tag play-codecheck:1.0-SNAPSHOT gcr.io/$PROJECT/play-codecheck
     docker push gcr.io/$PROJECT/play-codecheck
@@ -441,6 +444,11 @@ Deploy the `play-codecheck` service:
       --region us-central1 \
       --allow-unauthenticated \
       --min-instances=1
+      
 
-You will get a URL for the service. Now point your browser to
-`https://service url/assets/uploadProblem.html`
+You will get a URL for the service.
+
+To verify that it works visit this url and upload a problem
+```
+https://service url/assets/uploadProblem.html
+```
