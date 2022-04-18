@@ -1,6 +1,9 @@
 CodeCheck^®^ Build Instructions
 ===============================
 
+## Supported Platforms
+Codecheck is currently supported on Linux platforms (Ubuntu 20.04 LTS).
+
 Program Structure
 -----------------
 
@@ -30,6 +33,50 @@ This tool uses only the part of `play-codecheck` that deals with
 checking a problem (in the `com.horstmann.codecheck` package). The tool
 is called `codecheck`. It is created by the `cli/build.xml` Ant script.
 
+
+## Dependencies
+
+* openjdk-11-jdk   https://openjdk.java.net/projects/jdk/11
+* git   https://git-scm.com
+* ant   https://ant.apache.org
+* curl  https://curl.se
+* unzip
+* sbt   https://www.scala-sbt.org
+* docker https://www.docker.com
+* gcloud CLI SDK https://cloud.google.com
+* AWS CLI https://aws.amazon.com/
+
+## Download Codecheck codebase
+Download the codecheck source code using git to clone the repository
+```
+git clone https://github.com/cayhorstmann/codecheck2
+```
+
+## (Automatically) Install Codecheck dependencies
+Go to the root directory of codecheck2
+```
+cd codecheck2
+```
+### For Debian based Linux
+
+Make codecheck_deb_install script executable
+```
+chmod +x codecheck_deb_install.sh
+```
+Run the script
+```
+./codecheck_deb_install.sh
+```
+
+### For Rehat based Linux
+Make codecheck_rpm_install script executable
+```
+chmod +x codecheck_rpm_install.sh
+```
+Run the script
+```
+./codecheck_rpm_install.sh
+```
 Building the Command Line Tool
 ------------------------------
 
