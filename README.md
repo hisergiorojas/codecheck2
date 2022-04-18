@@ -1,4 +1,3 @@
-# Cloud Deployment
 ## Create production configuration file 
 Generate the application secret and store it at production configuration file
 ```
@@ -130,32 +129,11 @@ We would be deploying the play server to [Google Cloud](https://cloud.google.com
 
 Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for play-codecheck.
 
-After creating a project look for the project id 
-```
-export PROJECT=your Google project id
-```
-
-Deploy the Play Server
-```
-docker tag play-codecheck:1.0-SNAPSHOT gcr.io/$PROJECT/play-codecheck
-docker push gcr.io/$PROJECT/play-codecheck
-
-gcloud run deploy play-codecheck \
-  --image gcr.io/$PROJECT/play-codecheck \
-  --port 9000 \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --min-instances=1
-```
 
 
-You will get a URL for the service.
 
-To verify that it works visit this url and upload a problem
-```
-https://service url/assets/uploadProblem.html
-```
+
+
 
 ## Check if the comrun service is running
 To verify that the comrun service is running, visit this url
@@ -163,10 +141,6 @@ To verify that the comrun service is running, visit this url
 ```
 https://service url/api/health
 ```
-
-
-
-
 
 ## Error cgroups: cgroup mountpoint does not exist: unknown
 A temporary fix
