@@ -421,6 +421,18 @@ To verify that the comrun service is running, visit this url
 ```
 https://service url/api/health
 ```
+
+
+## How to scale your comrun service
+Following the [guideline from Google Cloud](https://cloud.google.com/run/docs/about-instance-autoscaling)
+
+Go to your [google cloud Run](https://console.cloud.google.com/run)
+
+* Click on a comrun service
+* Click on Edit and Deploy New Revision
+* Under Capacity you can change the Memory and CPU settings
+* Under Capacity you can change the Maximum requests per container (Concurrency)
+* Under Autoscaling you can change the Minimum and Maximum instances
     
 
 Play Server Deployment {#server-deployment}
