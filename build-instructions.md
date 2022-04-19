@@ -371,9 +371,9 @@ There are two parts to the CodeCheck server. We\'ll take them up one at
 a time. The `comrun` service compiles and runs student programs,
 isolated from the web app and separately scalable.
 
-Here is how to deploy the `comrun` service to Google Cloud.
+We would be deploying the `comrun` service to [Google Cloud](https://cloud.google.com/).
 
-Make a Google Cloud Run project. Define a service `comrun`.
+Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for `comrun`.
 
 
 After creating a project look for the project id 
