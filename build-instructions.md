@@ -364,6 +364,49 @@ docker container kill $(docker ps -q)
 
 
 # Cloud Deployment
+
+## Update production configuration file 
+Generate the application secret and store it at production configuration file
+```
+echo "play.http.secret.key=\"$(head -c 32 /dev/urandom | base64)\""
+```
+
+
+conf/production.conf
+
+
+```
+play.http.secret.key="see above"
+com.horstmann.codecheck.comrun.remote="the URL of the comrun service"
+com.horstmann.codecheck.s3.accessKey="your AWS credentials"
+com.horstmann.codecheck.s3.secretKey=""
+com.horstmann.codecheck.s3bucketsuffix="mybucket.mydomain.com"
+com.horstmann.codecheck.s3.region=your AWS region such as "us-west-1"
+com.horstmann.codecheck.repo.ext=""
+```
+
+Unknown Host Exception: host.docker.internal
+Add this to production.conf
+```
+com.horstmann.codecheck.storeLocation=
+```
+
+
+Deployment failed      
+ERROR: (gcloud.run.deploy) 
+Cloud Run error: Container failed to start. Failed to start and then listen on the port defined by the PORT environment variable. Logs for this revision might contain more information.
+
+```
+com.horstmann.codecheck.storeLocation=""
+```
+
+System Error: java.util.NoSuchElementException: submissionrun1/_run
+Update the production.conf file with /api/upload append at the end of the comrun remote url. 
+```
+com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload"
+
+```
+
 Comrun Service Deployment {#service-deployment}
 -------------------------
 
