@@ -441,7 +441,9 @@ Play Server Deployment {#server-deployment}
 In Amazon S3, create a bucket whose name starts with the four characters `ext.` and an arbitrary suffix, such as `ext.mydomain.com` to hold
 the uploaded CodeCheck problems. Set the ACL so that the bucket owner has all access rights and nobody else has any.
 
-In your Google Cloud Run project, add another service `play-codecheck`.
+We would be deploying the play server to [Google Cloud](https://cloud.google.com/).
+
+Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for `play-codecheck`.
 
 Add the following to `conf/production.conf`:
 
