@@ -89,16 +89,6 @@ Your credentials are saved in your user home directory
 $HOME/.docker/config.json
 ```
 
-## Comrun Service Cloud Deployment
-The comrun service compiles and runs the student's program.
-We would be deploying the comrun service to [Google Cloud](https://cloud.google.com/).
-
-
-Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for comrun.
-
-
-
-
 
 ## Play Server Cloud Deployment
 The Play Server is a web application that manages submission and assignments.
