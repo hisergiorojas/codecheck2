@@ -90,25 +90,6 @@ $HOME/.docker/config.json
 ```
 
 
-## Play Server Cloud Deployment
-The Play Server is a web application that manages submission and assignments.
-
-Here are the number of responsibilities that the Play Server handle
-
-* Display problems, collect submissions from students, and check them
-* Manage problems from instructors
-* Manage assignments (consisting of multiple problems)
-* Interface with learning management systems through the LTI protocol
-
-You can find a listing of the supported REST services in the app/conf/routes file.
-
-We would be deploying the play server to [Google Cloud](https://cloud.google.com/).
-
-Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for play-codecheck.
-
-
-
-
 ## Error cgroups: cgroup mountpoint does not exist: unknown
 A temporary fix
 ```
@@ -134,4 +115,3 @@ Update the production.conf file with /api/upload append at the end of the comrun
 com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload"
 
 ```
-
