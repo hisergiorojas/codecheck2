@@ -34,17 +34,7 @@ checking a problem (in the `com.horstmann.codecheck` package). The tool
 is called `codecheck`. It is created by the `cli/build.xml` Ant script.
 
 
-## Dependencies
 
-* openjdk-11-jdk   https://openjdk.java.net/projects/jdk/11
-* git   https://git-scm.com
-* ant   https://ant.apache.org
-* curl  https://curl.se
-* unzip
-* sbt   https://www.scala-sbt.org
-* docker https://www.docker.com
-* gcloud CLI SDK https://cloud.google.com
-* AWS CLI https://aws.amazon.com/
 
 ## Download Codecheck codebase
 Download the codecheck source code using git to clone the repository
@@ -80,99 +70,7 @@ Run the script
 
 
 
-## (Manually) Install Codecheck dependencies
-Open a terminal and install the dependencies
-```
-sudo apt-get update
-sudo apt install openjdk-11-jdk git ant curl unzip
-```
 
-Install sbt for Linux (deb) or [follow the instruction for your environment](https://www.scala-sbt.org/download.html)
-```
-echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
-echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee /etc/apt/sources.list.d/sbt_old.list
-curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
-sudo apt-get update
-sudo apt-get install sbt
-```
-Install docker for Linux or [follow the instruction for your environment](https://docs.docker.com/engine/install/)
-```
- sudo apt-get update
- 
-  sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-```
-Add Docker’s official GPG key
-```
- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-```
-Use the following command to set up the stable repository.
-```
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-```
-Update the apt package index, and install the latest version of Docker Engine and containerd
-```
- sudo apt-get update
- sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-
-Install Google Cloud CLI for linux or [follow the instruction for your environment](https://cloud.google.com/sdk/docs/install#linux)
-
-Open a terminal and download Google Cloud SDK
-```
-curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-373.0.0-linux-x86_64.tar.gz
-```
-
-Extract the contents of the file to any location on your file system (preferably your Home directory). To replace an existing installation, remove the existing google-cloud-sdk directory and then extract the archive to the same location.
-```
-tar -xf google-cloud-sdk-373.0.0-linux-x86.tar.gz
-```
-
-Run the script (from the root of the folder you extracted to) using the following command
-```
-./google-cloud-sdk/install.sh
-```
-To initialize the gcloud CLI, run gcloud init
-```
-./google-cloud-sdk/bin/gcloud init
-```
-Install AWS CLI for linux or [follow the instruction for your environment](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-
-Open a terminal and download the AWS CLI installation file 
-
-```
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-```
-
-Unzip the installer
-```
-unzip awscliv2.zip
-```
-
-Run the install program
-```
-sudo ./aws/install
-```
-Confirm the installation with the following command
-```
-aws --version
-```
-Configure AWS CLI [instruction](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html)
-* Access key ID
-
-* Secret access key
-
-* AWS Region
-
-* Output format
-```
-aws configure
-```
 
 ## Setup Codecheck environment
 Create a /opt/codecheck directory and a subdirectory ext that you own
