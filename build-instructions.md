@@ -35,13 +35,6 @@ is called `codecheck`. It is created by the `cli/build.xml` Ant script.
 
 
 
-
-## Download Codecheck codebase
-Download the codecheck source code using git to clone the repository
-```
-git clone https://github.com/cayhorstmann/codecheck2
-```
-
 ## (Automatically) Install Codecheck dependencies
 Go to the root directory of codecheck2
 ```
@@ -66,63 +59,7 @@ chmod +x codecheck_rpm_install.sh
 Run the script
 ```
 ./codecheck_rpm_install.sh
-```
-
-
-
-
-
-## Setup Codecheck environment
-Create a /opt/codecheck directory and a subdirectory ext that you own
-```
-sudo mkdir -p /opt/codecheck/ext
-export ME=$(whoami) ; sudo -E chown $ME /opt/codecheck /opt/codecheck/ext
-```
-
-## Build the command-line tool
-Install jackson-core, jackson-annotations, and jackson-databind jar files
-
-From the root directory of the repository, go to cli directory and make a lib directory
-```
-cd cli
-mkdir lib
-```
-
-Install the jar files in the lib directory
-```
-cd lib
-curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.6.4/jackson-core-2.6.4.jar
-curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.6.4/jackson-annotations-2.6.4.jar
-curl -LOs https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.6.4/jackson-databind-2.6.4.jar
-```
-Install checkstyle, hamcrest-core, and junit jar files
-
-From the root directory of the repository, go to comrun directory and next go to bin directory, then make a lib directory
-```
-cd comrun/bin
-mkdir lib
-```
-Install the jar files in the lib directory
-```
-cd lib
-curl -LOs https://repo1.maven.org/maven2/com/puppycrawl/tools/checkstyle/8.42/checkstyle-8.42.jar
-curl -LOs https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
-curl -LOs https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
-```
-From the root directory of the repository, build the command-line tool
-```
-ant -f cli/build.xml
-```
-To verify that it works
-```
-/opt/codecheck/codecheck -t samples/java/example1
-```
-If you omit the `-t`, you get a report with your default browser instead
-of the text report.
-
-
-
-    
+```    
 
 Debugging the Command Line Tool
 -------------------------------
