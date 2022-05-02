@@ -1,13 +1,6 @@
 Docker Deployment
 -----------------
 
-Create a file `conf/production.conf` holding an [application
-secret](https://www.playframework.com/documentation/2.8.x/ApplicationSecret):
-
-    echo "play.http.secret.key=\"$(head -c 32 /dev/urandom | base64)\"" > conf/production.conf
-    echo "com.horstmann.codecheck.comrun.remote=\"http://host.docker.internal:8080/api/upload\"" >> conf/production.conf
-
-Do not check this file into version control!
 
 ## Build and run the comrun service Docker container
 From the root directory of the repository, build the comrun service Docker container
