@@ -79,38 +79,6 @@ When debugging, add the VM argument
     -Dcom.horstmann.codecheck.comrun.remote=http://localhost:8080/api/upload
 
 
-
-Debugging the Server
---------------------
-
-Install, following the instructions
-
--   [Eclipse](https://www.eclipse.org/eclipseide/)
-
-Import the project into Eclipse. Run
-
-    sbt eclipse
-
-Then open Eclipse and import the created project.
-
-Make a debugger configuration. Select Run → Debug Configurations,
-right-click on Remote Java Application, and select New Configuration.
-Specify:
-
--   Project: `play-codecheck`
--   Connection type: Standard
--   Host: `localhost`
--   Port: 9999
-
-Run the `play-codecheck` server in debug mode:
-
-    COMRUN_USER=$(whoami) sbt -jvm-debug 9999 run
-
-In Eclipse, select Run → Debug Configurations, select the configuration
-you created, and select Debug. Point the browser to a URL such as
-<http://localhost:9090/assets/uploadProblem.html>. Set breakpoints as
-needed.
-
 Docker Deployment
 -----------------
 
