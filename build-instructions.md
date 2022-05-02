@@ -78,21 +78,7 @@ When debugging, add the VM argument
 
     -Dcom.horstmann.codecheck.comrun.remote=http://localhost:8080/api/upload
 
-## Run the web application locally
 
-From the root directory of the repository, run the play-codecheck server    
-```
-sbt run
-```
-
-
-
-To verify that it works visit this url and upload a problem
-```
-http://localhost:9000/assets/uploadProblem.html
-```
-Note: The problem files will be located inside the `/opt/codecheck/ext`
-directory.
 
 Debugging the Server
 --------------------
