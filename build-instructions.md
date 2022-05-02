@@ -38,11 +38,7 @@ To verify that it works visit the url and upload a problem.
 http://localhost:9090/assets/uploadProblem.html
 ```
 
-### Shutdown both containers
-Open a terminal and shutdown both containers
-```
-docker container kill $(docker ps -q)
-```
+
 
 
 # Cloud Deployment
