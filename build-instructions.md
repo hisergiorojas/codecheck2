@@ -43,8 +43,7 @@ conf/production.conf
 
 ```
 play.http.secret.key="see above"
-com.horstmann.codecheck.comrun.remote="the URL of the comrun service"
-com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload"
+com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload" google cloud run service
 com.horstmann.codecheck.s3.accessKey="your AWS credentials"
 com.horstmann.codecheck.s3.secretKey=""
 com.horstmann.codecheck.s3bucketsuffix="mybucket.mydomain.com"
