@@ -35,50 +35,6 @@ is called `codecheck`. It is created by the `cli/build.xml` Ant script.
 
 
 
-Debugging the Command Line Tool
--------------------------------
-
-If you are making changes to the part of CodeCheck that does the actual
-code checking, such as adding a new language, and you need to run a
-debugger, it is easiest to debug the command line tool.
-
-Make directories for the submission and problem files, and populate them
-with samples.
-
-In your debug configuration, set:
-
--   The main class to
-
-        com.horstmann.codecheck.Main
-
--   Program arguments to
-
-        /path/to/submissiondir /path/to/problemdir
-
--   VM arguments to
-
-        -Duser.language=en
-        -Duser.country=US
-        -Dcom.horstmann.codecheck.comrun.local=/opt/codecheck/comrun
-        -Dcom.horstmann.codecheck.report=HTML
-        -Dcom.horstmann.codecheck.debug
-
--   The environment variable `COMRUN_USER` to your username
-
-To debug on Windows or MacOS, you have to use the Docker container for
-compilation and execution.
-
-    docker build --tag comrun:1.0-SNAPSHOT comrun
-    docker run -p 8080:8080 -it comrun:1.0-SNAPSHOT
-
-Point your browser to <http://localhost:8080/api/health> to check that
-the container is running.
-
-When debugging, add the VM argument
-
-    -Dcom.horstmann.codecheck.comrun.remote=http://localhost:8080/api/upload
-
-
 Docker Deployment
 -----------------
 
