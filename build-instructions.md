@@ -35,32 +35,6 @@ is called `codecheck`. It is created by the `cli/build.xml` Ant script.
 
 
 
-## (Automatically) Install Codecheck dependencies
-Go to the root directory of codecheck2
-```
-cd codecheck2
-```
-### For Debian based Linux
-
-Make codecheck_deb_install script executable
-```
-chmod +x codecheck_deb_install.sh
-```
-Run the script
-```
-./codecheck_deb_install.sh
-```
-
-### For Rehat based Linux
-Make codecheck_rpm_install script executable
-```
-chmod +x codecheck_rpm_install.sh
-```
-Run the script
-```
-./codecheck_rpm_install.sh
-```    
-
 Debugging the Command Line Tool
 -------------------------------
 
