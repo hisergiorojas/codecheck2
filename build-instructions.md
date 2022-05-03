@@ -94,9 +94,9 @@ gcloud run deploy comrun \
   --concurrency=40
 ```
 
-## Check if the comrun service is running
+You should get a URL for the service. Make a note of it---it won't change, and you need it in the next steps. To test that the service is properly deployed, do this:
 
-You will get a URL for the service.
+
 
 To verify that the service is properly deployed, You should get a report that was obtained by sending the compile and run jobs to your remote service.
 ```
@@ -112,7 +112,7 @@ Alternatively, you can test with the locally running web app. In
     com.horstmann.codecheck.comrun.remote= the URL of the comrun service
     
  
-To verify that the comrun service is running, visit this url
+To check the health of the comrun service, visit this url
 
 ```
 https://service url/api/health
