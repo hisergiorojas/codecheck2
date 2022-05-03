@@ -38,20 +38,6 @@ http://localhost:9090/assets/uploadProblem.html
 
 
 
-conf/production.conf
-
-
-```
-play.http.secret.key="see above"
-com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload" google cloud run service
-com.horstmann.codecheck.s3.accessKey="your AWS credentials"
-com.horstmann.codecheck.s3.secretKey=""
-com.horstmann.codecheck.s3bucketsuffix="mybucket.mydomain.com"
-com.horstmann.codecheck.s3.region=your AWS region such as "us-west-1"
-com.horstmann.codecheck.repo.ext=""
-com.horstmann.codecheck.storeLocation=""
-```
-
 Comrun Service Deployment {#service-deployment}
 -------------------------
 
@@ -147,10 +133,13 @@ We would be deploying the play server to [Google Cloud](https://cloud.google.com
 
 Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for `play-codecheck`.
 
+
+
+
 Add the following to `conf/production.conf`:
 
     play.http.secret.key= see above
-    com.horstmann.codecheck.comrun.remote=comrun host URL/api/upload
+    com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload" google cloud run service
     com.horstmann.codecheck.s3.accessKey= your AWS credentials
     com.horstmann.codecheck.s3.secretKey=
     com.horstmann.codecheck.s3bucketsuffix="mydomain.com"
