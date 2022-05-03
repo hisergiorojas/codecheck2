@@ -63,6 +63,14 @@ We would be deploying the `comrun` service to [Google Cloud](https://cloud.googl
 
 Create a [Google Cloud Run](https://console.cloud.google.com/run?project) project and a define a service for `comrun`.
 
+* Click on Create Service
+* For Deploy one revision from an existing container image: Click on Test With a Sample Container
+* Change the Service name to Comrun
+* Don't change the Region default value
+* CPU allocation and pricing should be CPU is only allocated during request processing
+* Authentication should be Allow unauthenticated invocations
+
+
 
 After creating a project look for the project id 
 ```
