@@ -73,6 +73,12 @@ Create a [Google Cloud Run](https://console.cloud.google.com/run?project) projec
 
 
 After creating a project look for the project id 
+* Go to https://console.cloud.google.com/run?project
+* In the url there should be a name after project
+
+```
+https://console.cloud.google.com/run?project=xx-xx
+```
 ```
 export PROJECT=your Google project id
 ```
