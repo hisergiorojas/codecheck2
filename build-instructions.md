@@ -129,6 +129,9 @@ Play Server Deployment {#server-deployment}
 In Amazon S3, create a bucket whose name starts with the four characters `ext.` and an arbitrary suffix, such as `ext.mydomain.com` to hold
 the uploaded CodeCheck problems. Set the ACL so that the bucket owner has all access rights and nobody else has any.
 * Go to https://s3.console.aws.amazon.com/s3/get-started
+* Bucket Name: ext.mydomain.com
+* AWS Region: us-west-1
+* uncheck Block all public access
 
 We would be deploying the play server to [Google Cloud](https://cloud.google.com/).
 
@@ -143,7 +146,7 @@ Add the following to `conf/production.conf`:
     com.horstmann.codecheck.comrun.remote="https://comrun-url/api/upload" google cloud run service
     com.horstmann.codecheck.s3.accessKey= your AWS credentials
     com.horstmann.codecheck.s3.secretKey=
-    com.horstmann.codecheck.s3bucketsuffix="mydomain.com"
+    com.horstmann.codecheck.s3bucketsuffix="ext.mydomain.com"
     com.horstmann.codecheck.s3.region=your AWS region such as "us-west-1"
     com.horstmann.codecheck.repo.ext=""
     com.horstmann.codecheck.storeLocation=""
